@@ -1,30 +1,41 @@
 import model from "../model/model";
+import modelUser from "../model/modelUser";
 
 class QuestionsListPresenter {
-   onChooseAddQuestion(){
-    window.location.assign("#/create-question");
-   }
-
    onCreateQuestion() {
-    model.addQuestion(model.state.newQuestion.titleQ, model.state.newQuestion.text, model.state.newQuestion.creationDate, model.state.newQuestion.author, model.state.newQuestion.tag)
-    .then( ()=>{
-      model.changeNewQuestionProperty("titleQ", "");
-      model.changeNewQuestionProperty("text", "");
-      model.changeNewQuestionProperty("creationDate", "");
-      model.changeNewQuestionProperty("author", "");
-      model.changeNewQuestionProperty("tag", "");
-      window.location.assign("#/");
-    });
-    
+      model.addQuestion(model.state.newQuestion.title,
+       model.state.newQuestion.text,
+       Date.now(),
+       modelUser.state.currentUser.username,
+       model.state.newQuestion.tag);
+      
    }
 
-   onChange(property, value) {
-    model.changeNewQuestionProperty(property, value);
+   onAddQuestion(){
+      window.location.assign("#/create-question");
    }
 
    onInit(){
-    model.loadQuestions();
+      model.loadQuestions();
    }
+   
+   onListQuestions() {
+      window.location.assign("#/list-questions");
+   }
+   
+   onFilterQuestions() {
+      window.location.assign("#/filter-questions");
+   }
+
+   onFilteredQuestions(){
+      model.findByTitle();
+      window.location.assign("#/filter-questions-yes");
+   }
+
+   changeToSearch(property, value){
+      model.changeToSearch(property, value);
+
+    }
    
 }
 

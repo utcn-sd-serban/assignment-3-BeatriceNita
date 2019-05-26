@@ -1,17 +1,15 @@
 import React from "react";
 
-const CreateQuestion = ({ titleQ, text, creationDate, author, tag, onChange, onCreateQuestion }) => (
+const CreateQuestion = ({ title, text, author, tag, onCreateQuestion, onChange }) => (
     <div>
-        <h2>Add Question</h2>
+        <h1 class="text bg-info">Ask Question</h1>
+        <p class="text-info">Fill in the requested info</p>
         <div>
             <label>Title: </label>
-            <input value={titleQ} onChange={ e => onChange("titleQ", e.target.value)} />
+            <input value={title} onChange={ e => onChange("title", e.target.value)} />
             <br />
             <label>Text: </label>
             <input value={text} onChange={ e => onChange("text", e.target.value)} />
-            <br />
-            <label>Creation Date: </label>
-            <input value={creationDate} onChange={ e => onChange("creationDate", e.target.value)} />
             <br />
             <label>Author: </label>
             <input value={author} onChange={ e => onChange("author", e.target.value)} />

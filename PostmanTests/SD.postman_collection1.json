@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "50bfc394-2dad-44e7-8c7a-f2fb3f6e2da3",
+		"name": "SD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "84bc3c10-58f2-4085-8252-f2d1a505040f",
+						"exec": [
+							"pm.test(\"Response status is OK\", function(){",
+							"    pm.response.to.be.ok;",
+							"});",
+							"",
+							"pm.test(\"There are at least 3 questions\", function(){",
+							"    var questions = pm.response.json();",
+							"    pm.expect(questions.length).to.be.gt(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "food",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "otto",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"questions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

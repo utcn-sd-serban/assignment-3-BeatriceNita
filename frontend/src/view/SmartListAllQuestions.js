@@ -23,8 +23,8 @@ export default class SmartChooseOpQuestions extends Component {
     render() {
         return (
             <ListAllQuestions
-                questions={this.state.questions}
-                onChooseAddQuestion = {questionsListPresenter.onChooseAddQuestion} />
+                onCreateQuestion={questionsListPresenter.onCreateQuestion}
+                questions={this.state.questions} />
         );
     }
 }

@@ -4,19 +4,19 @@ class ModelUser extends EventEmitter {
     constructor() {
         super();
         this.state = {
-            users: [{
-                username: "otto",
-                password: "food"
+            users: [{ 
+                username:"otto",
+                password:"food"
             }],
-            newUser: {
+                currentUser: {
                 username: "",
                 password: ""
-            }
+             }
         };
     }
 
 
-    addUser(username, password) {
+    /*addUser(username, password) {
         this.state = {
             ...this.state,
             users: this.state.users.concat([{
@@ -25,13 +25,13 @@ class ModelUser extends EventEmitter {
             }])
         };
         this.emit("change", this.state);
-    }
+    }*/
 
     changeNewUserProperty(property, value) {
         this.state = {
             ...this.state,
-            newUser: {
-                ...this.state.newUser,
+            currentUser: {
+                ...this.state.currentUser,
                 [property]: value
             }
         };

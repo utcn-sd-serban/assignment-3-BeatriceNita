@@ -13,15 +13,16 @@ export default class RestClient {
             }
         }).then(response => response.json());
     }
-    createQuestion(titleQ, text, creationDate, author, tag) {
-        return fetch(BASE_URL + "/students", {
+    createQuestion(title, text, creationDate, author, tag) {
+        return fetch(BASE_URL + "/questions", {
             method: "POST",
             body: JSON.stringify({
-                titleQ: titleQ,
+                id:null,
+                title: title,
                 text: text,
                 creationDate: creationDate,
                 author: author,
-                tag: tag
+                tag:{id:null,name:tag}
             }),
             headers: {
                 "Authorization": this.authorization,
